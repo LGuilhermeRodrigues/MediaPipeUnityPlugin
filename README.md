@@ -1,6 +1,8 @@
 # MediaPipe Unity Plugin Pose Tracker
 
-This repo. was used to change the build settings of the MediaPipeUnityPlugin and create a smaller asset bundle, with only the pose tracker model.
+⚠️ If you have openned Unity Editor before following the instructions below, you will have problems with .meta files and other errors.
+
+This repo. was used to change the build settings of the MediaPipeUnityPlugin and create a smaller asset bundle, with only the pose tracking model.
 
 Before opening the Unity Editor:
 
