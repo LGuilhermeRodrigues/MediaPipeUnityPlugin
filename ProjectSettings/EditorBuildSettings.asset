@@ -5,20 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Object Detection/Object Detection.unity
     guid: d3734ffcdd3a40779bdd8de2c55bee2f
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Image Segmentation/Image Segmentation.unity
     guid: d3c55222b68d3b6b797034638df4d179
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Face Detection/Face Detection.unity
     guid: 6398790df6f5f3123a3d09434706eb95
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Face Landmark Detection/Face Landmark
       Detection.unity
     guid: df0fc3b9f7146dee593f8b5660ae773c
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Hand Landmark Detection/Hand Landmark
       Detection.unity
     guid: 98d49dcfe667ea822a91d6b74f7cb2e9
@@ -26,10 +26,10 @@ EditorBuildSettings:
     path: Assets/MediaPipeUnity/Samples/Scenes/Pose Landmark Detection/Pose Landmark
       Detection.unity
     guid: 927caf745c48e562eaa2cda915b091b4
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Legacy/Holistic/Holistic.unity
     guid: 530502d398830609297010a1521c815f
-  - enabled: 1
+  - enabled: 0
     path: Assets/MediaPipeUnity/Samples/Scenes/Legacy/MediaPipe Video/MediaPipe Video.unity
     guid: 16062faf4cda54140b781b925351b119
   m_configObjects: {}
