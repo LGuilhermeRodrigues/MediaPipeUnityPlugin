@@ -8,4 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MediaPipeUnity/Samples/Scenes/Pose/Pose.unity
     guid: 11d933a802f69814ba97d54a6a1fe5e8
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: d6d3b6ddd2a73fe43b3fe7081c93fef4,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 7e996a5e578d2d34d9c4c844fa31266e,
+      type: 2}

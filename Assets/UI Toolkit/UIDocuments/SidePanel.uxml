@@ -1,6 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/Buttons.uss?fileID=7433441132597879392&amp;guid=de820c52b3b0d034ab36eef28e551cd3&amp;type=3#Buttons" />
-    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="gui-button gui-left-button">
-        <ui:VisualElement name="Image" class="gui-button-image" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/Graphics/Icons/menu-open.svg?fileID=7388822144124034973&amp;guid=4b0b502430346e84fbe82e3bb88cede2&amp;type=3#menu-open&quot;);" />
-    </ui:Button>
+    <ui:VisualElement name="Screen" class="gui-screen">
+        <ui:VisualElement name="LeftPanel" class="gui-panel gui-hidden-panel">
+            <ui:VisualElement name="TitleWithIcon" class="gui-title-with-icon">
+                <ui:VisualElement name="CameraIcon" class="gui-title-icon" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/Graphics/Icons/camera-outline.svg?fileID=7388822144124034973&amp;guid=dcf57358242ba2a4cb02207e58012e0b&amp;type=3#camera-outline&quot;);" />
+                <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" text="Camera Settings" class="gui-title-text" />
+            </ui:VisualElement>
+            <ui:VisualElement name="DropDownWithLabel" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenButton" class="gui-button gui-left-button">
+            <ui:VisualElement name="Image" class="gui-button-image gui-button-image-open" />
+        </ui:Button>
+    </ui:VisualElement>
 </ui:UXML>
