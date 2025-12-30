@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/Buttons.uss?fileID=7433441132597879392&amp;guid=de820c52b3b0d034ab36eef28e551cd3&amp;type=3#Buttons" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button" class="gui-button gui-left-button">
+        <ui:VisualElement name="Image" class="gui-button-image" style="background-image: url(&quot;project://database/Assets/UI%20Toolkit/Graphics/Icons/menu-open.svg?fileID=7388822144124034973&amp;guid=4b0b502430346e84fbe82e3bb88cede2&amp;type=3#menu-open&quot;);" />
+    </ui:Button>
+</ui:UXML>

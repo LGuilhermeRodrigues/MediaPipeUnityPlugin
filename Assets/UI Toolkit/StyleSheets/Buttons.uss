@@ -1,0 +1,29 @@
+.gui-button {
+    cursor: url("project://database/Assets/UI%20Toolkit/Graphics/Cursors/cursor_hand_point.png?fileID=2800000&guid=69246da2fde715d438f89bff38b82490&type=3#cursor_hand_point") 6 6;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    padding: 20px;
+}
+
+.gui-button:hover {
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.5s;
+    scale: 1.1 1.1;
+}
+
+.gui-button-image {
+    flex-grow: 1;
+    -unity-background-scale-mode: scale-to-fit;
+    cursor: url("project://database/Assets/UI%20Toolkit/Graphics/Cursors/cursor_hand_point.png?fileID=2800000&guid=69246da2fde715d438f89bff38b82490&type=3#cursor_hand_point") 6 6;
+}
+
+.gui-left-button {
+    margin-left: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.gui-left-button:hover {
+    transform-origin: left;
+}

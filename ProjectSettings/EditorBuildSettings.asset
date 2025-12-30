@@ -6,10 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MediaPipeUnity/Samples/Scenes/Pose Landmark Detection/Pose Landmark
-      Detection.unity
-    guid: 927caf745c48e562eaa2cda915b091b4
-  - enabled: 1
     path: Assets/MediaPipeUnity/Samples/Scenes/Pose/Pose.unity
     guid: 11d933a802f69814ba97d54a6a1fe5e8
   m_configObjects: {}
