@@ -9,7 +9,7 @@ public class PoseSolution : MonoBehaviour
   [SerializeField] private bool hideLegacyConfigWindows = true;
   [SerializeField] private bool hideLeftPanel = false;
   private BaseRunner _baseRunner;
-  private bool has_changes;
+  public bool has_changes;
   
   void Awake()
   {

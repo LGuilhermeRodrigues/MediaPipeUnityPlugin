@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AppSettings
   m_EditorClassIdentifier: 
   _defaultImageSource: 0
-  _preferableInferenceMode: 0
+  _preferableInferenceMode: 1
   _assetLoaderType: 0
   _logLevel: 5
   _glogMinloglevel: 0
@@ -21,13 +21,7 @@ MonoBehaviour:
   _glogV: 0
   _preferredDefaultWebCamWidth: 1280
   _defaultAvailableWebCamResolutions:
-  - width: 176
-    height: 144
-    frameRate: 30
   - width: 320
-    height: 240
-    frameRate: 30
-  - width: 424
     height: 240
     frameRate: 30
   - width: 640
@@ -36,17 +30,8 @@ MonoBehaviour:
   - width: 640
     height: 480
     frameRate: 30
-  - width: 848
-    height: 480
-    frameRate: 30
-  - width: 960
-    height: 540
-    frameRate: 30
   - width: 1280
     height: 720
-    frameRate: 30
-  - width: 1600
-    height: 896
     frameRate: 30
   - width: 1920
     height: 1080

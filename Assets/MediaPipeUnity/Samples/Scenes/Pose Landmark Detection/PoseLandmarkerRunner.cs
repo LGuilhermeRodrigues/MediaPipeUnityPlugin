@@ -43,9 +43,12 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
       var options = config.GetPoseLandmarkerOptions(config.RunningMode == Tasks.Vision.Core.RunningMode.LIVE_STREAM ? OnPoseLandmarkDetectionOutput : null);
       taskApi = PoseLandmarker.CreateFromOptions(options, GpuManager.GpuResources);
       var imageSource = ImageSourceProvider.ImageSource;
-
+      
+      //var test = CustomSettings.CameraName;
+      //imageSource.SelectSource(CustomSettings.GetCameraNameOptions().IndexOf(CustomSettings.CameraName));
+      
       yield return imageSource.Play();
-
+      
       if (!imageSource.isPrepared)
       {
         Logger.LogError(TAG, "Failed to start ImageSource, exiting...");

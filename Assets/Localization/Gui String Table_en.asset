@@ -19,7 +19,15 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 62597230592
-    m_Localized: Camera Settings
+    m_Localized: Tracking Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35501186084864
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39329109241856
+    m_Localized: Camera Name
     m_Metadata:
       m_Items: []
   references:

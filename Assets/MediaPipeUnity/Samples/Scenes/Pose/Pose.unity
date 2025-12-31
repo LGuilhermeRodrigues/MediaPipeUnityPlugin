@@ -496,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseSolution: {fileID: 1181742979}
+  stringTable: {fileID: 11400000, guid: 158d1a07450705b40957c96e2d233b6b, type: 2}
 --- !u!114 &1164454495 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2020366215714292840, guid: 5713b959e3c77a58fb258133fc8e4aef,

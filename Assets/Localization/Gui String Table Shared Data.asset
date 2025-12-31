@@ -15,8 +15,16 @@ MonoBehaviour:
   m_TableCollectionName: Gui String Table
   m_TableCollectionNameGuidString: f902216aa16f51c499e617fad4dca7c1
   m_Entries:
+  - m_Id: 35501186084864
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
   - m_Id: 62597230592
-    m_Key: Camera Settings
+    m_Key: Tracking Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39329109241856
+    m_Key: Camera Name
     m_Metadata:
       m_Items: []
   m_Metadata:
