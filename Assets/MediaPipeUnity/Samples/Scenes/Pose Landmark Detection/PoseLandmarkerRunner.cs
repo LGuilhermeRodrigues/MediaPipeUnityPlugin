@@ -44,8 +44,7 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
       taskApi = PoseLandmarker.CreateFromOptions(options, GpuManager.GpuResources);
       var imageSource = ImageSourceProvider.ImageSource;
       
-      //var test = CustomSettings.CameraName;
-      //imageSource.SelectSource(CustomSettings.GetCameraNameOptions().IndexOf(CustomSettings.CameraName));
+      imageSource.SelectSource(CustomSettings.GetCameraNameOptions().IndexOf(CustomSettings.CameraName));
       
       yield return imageSource.Play();
       

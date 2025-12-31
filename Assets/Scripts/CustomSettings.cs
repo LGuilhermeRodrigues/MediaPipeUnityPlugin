@@ -165,7 +165,7 @@ public static class CustomSettings
         string formatted = string.Format(
             CultureInfo.InvariantCulture,
             "{0:F3};{1:F3};{2:F3}",
-            c.R, c.G, c.B
+            c.r, c.g, c.b
         );
         return formatted;
     }
@@ -176,11 +176,7 @@ public static class CustomSettings
         float r = float.Parse(parts[0], CultureInfo.InvariantCulture);
         float g = float.Parse(parts[1], CultureInfo.InvariantCulture);
         float b = float.Parse(parts[2], CultureInfo.InvariantCulture);
-        var color = new Color();
-        color.R = int.Parse(parts[0], CultureInfo.InvariantCulture);
-        color.G = int.Parse(parts[1], CultureInfo.InvariantCulture);
-        color.B = int.Parse(parts[2], CultureInfo.InvariantCulture);
-        return color;
+        return new  Color(r, g, b, 1f);
     } 
 
     

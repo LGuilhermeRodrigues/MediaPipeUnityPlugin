@@ -12,7 +12,7 @@
     width: 40%;
     height: 100%;
     background-color: rgb(188, 188, 188);
-    transition-duration: 1s;
+    transition-duration: 0.5s;
     overflow: hidden;
 }
 
