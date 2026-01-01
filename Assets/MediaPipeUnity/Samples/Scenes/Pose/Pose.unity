@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74782214bdabea24db6f50f9ea666371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideLegacyConfigWindows: 0
-  hideLeftPanel: 1
+  hideLegacyConfigWindows: 1
+  hideLeftPanel: 0
 --- !u!1 &1482569799
 GameObject:
   m_ObjectHideFlags: 0

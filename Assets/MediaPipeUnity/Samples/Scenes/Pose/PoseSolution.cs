@@ -30,7 +30,7 @@ public class PoseSolution : MonoBehaviour
   {
     GameObject mediapipeSolution = GameObject.Find("Solution");
     _baseRunner = mediapipeSolution.GetComponent<BaseRunner>();
-    //UpdateSegmentationMask();
+    UpdateSegmentationMask();
   }
 
   void DisableLegacyWindows(Transform mainCanvas)
@@ -57,7 +57,7 @@ public class PoseSolution : MonoBehaviour
   {
     if (has_changes)
     {
-      //UpdateSegmentationMask();
+      UpdateSegmentationMask();
       _baseRunner.Play();
     }
     else
