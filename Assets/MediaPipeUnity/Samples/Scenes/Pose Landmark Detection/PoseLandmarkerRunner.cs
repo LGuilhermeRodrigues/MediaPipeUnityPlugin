@@ -28,6 +28,20 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
 
     protected override IEnumerator Run()
     {
+      /*switch (CustomSettings.ModelType)
+      {
+        case 0:
+          config.Model = ModelType.BlazePoseLite;
+          break;
+        case 1:
+          config.Model = ModelType.BlazePoseFull;
+          break;
+        case 2:
+          config.Model = ModelType.BlazePoseHeavy;
+          break;
+      }*/
+      config.OutputSegmentationMasks = false;
+      
       Debug.Log($"Delegate = {config.Delegate}");
       Debug.Log($"Image Read Mode = {config.ImageReadMode}");
       Debug.Log($"Model = {config.ModelName}");
@@ -45,6 +59,8 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
       var imageSource = ImageSourceProvider.ImageSource;
       
       imageSource.SelectSource(CustomSettings.GetCameraNameOptions().IndexOf(CustomSettings.CameraName));
+      imageSource.SelectResolution(CustomSettings.CameraResolutionIndex);
+      imageSource.isHorizontallyFlipped = CustomSettings.IsCameraFlipped;
       
       yield return imageSource.Play();
       

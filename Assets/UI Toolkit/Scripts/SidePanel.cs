@@ -17,6 +17,9 @@ public class SidePanel : MonoBehaviour
     private Button open_button;
     VisualElement button_image;
     DropdownField dropdownFieldCameraSource;
+    private DropdownField dropdownFieldCameraResolutionIndex;
+    private Toggle toggleIsCameraFlipped;
+    private Toggle toggleSegmentationMask;
 
     private void Awake()
     {
@@ -33,7 +36,27 @@ public class SidePanel : MonoBehaviour
       dropdownFieldCameraSource.RegisterValueChangedCallback(v =>
       {
         CustomSettings.CameraName = v.newValue;
-        poseSolution.has_changes  = true;
+        poseSolution.NotifyChanges();
+      });
+      dropdownFieldCameraResolutionIndex = root.Q("DropdownResolution") as DropdownField;
+      dropdownFieldCameraResolutionIndex.RegisterValueChangedCallback(evt =>
+      {
+        CustomSettings.CameraResolutionIndex = CameraResolutionTextToIndex(evt.newValue);
+        poseSolution.NotifyChanges();
+      });
+      toggleIsCameraFlipped  = root.Q("Flipped") as Toggle;
+      toggleIsCameraFlipped.SetValueWithoutNotify(CustomSettings.IsCameraFlipped);
+      toggleIsCameraFlipped.RegisterValueChangedCallback(evt =>
+      {
+        CustomSettings.IsCameraFlipped = evt.newValue;
+        poseSolution.NotifyChanges();
+      });
+      toggleSegmentationMask =  root.Q("Segmentation") as Toggle;
+      toggleSegmentationMask?.SetValueWithoutNotify(CustomSettings.SegmentationMask);
+      toggleSegmentationMask.RegisterValueChangedCallback(evt =>
+      {
+        CustomSettings.SegmentationMask = evt.newValue;
+        poseSolution.NotifyChanges();
       });
     }
 
@@ -65,6 +88,14 @@ public class SidePanel : MonoBehaviour
       dropdownFieldCameraSource.choices.AddRange(CustomSettings.GetCameraNameOptions());
       var currentCamera = CustomSettings.CameraName;
       dropdownFieldCameraSource.SetValueWithoutNotify(currentCamera);
+      
+    }
+
+    private void CheckPossibleFallbacks()
+    {
+      // if the selected resolution was incompatible CameraResolutionIndex have changed when panels opens
+      var selectedText = dropdownFieldCameraResolutionIndex.choices[CustomSettings.CameraResolutionIndex];
+      dropdownFieldCameraResolutionIndex.SetValueWithoutNotify(selectedText);
     }
 
     private void UpdateString(Label label)
@@ -93,6 +124,23 @@ public class SidePanel : MonoBehaviour
         button_image.RemoveFromClassList("gui-button-image-open");
         button_image.AddToClassList("gui-button-image-close");
         poseSolution.Pause();
+        CheckPossibleFallbacks();
       }
     }
+    
+    private int CameraResolutionTextToIndex(string text)
+    {
+      if (text.Contains("320x"))
+        return 0;
+      if (text.Contains("640x360"))
+        return 1;
+      if  (text.Contains("640x480"))
+        return 2;
+      if  (text.Contains("1280x"))
+        return 3;
+      if  (text.Contains("1920x"))
+        return 4;
+      return 0;
+    }
+    
 }

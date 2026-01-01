@@ -112,3 +112,23 @@
     margin-bottom: 15px;
     margin-left: 15px;
 }
+
+.gui-dropdown .unity-popup-field__label {
+    min-width: 300px;
+}
+
+.gui-toggle {
+    font-size: 28px;
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+.gui-toggle .unity-toggle__label {
+    min-width: 300px;
+}
+
+.gui-toggle .unity-toggle__input {
+    justify-content: center;
+}

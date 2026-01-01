@@ -27,6 +27,18 @@ MonoBehaviour:
     m_Key: Camera Name
     m_Metadata:
       m_Items: []
+  - m_Id: 659253678698496
+    m_Key: Camera Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 667284344795136
+    m_Key: Is Horizontally Flipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692299605864448
+    m_Key: Segmentation Mask
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

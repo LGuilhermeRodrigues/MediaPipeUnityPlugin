@@ -9,6 +9,9 @@
                     <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" text="Tracking Settings" class="gui-title-text" />
                 </ui:VisualElement>
                 <ui:DropdownField label="Camera Name" name="DropdownCamera" class="gui-dropdown" />
+                <ui:DropdownField label="Camera Resolution" name="DropdownResolution" choices="QVGA 320x240 (4:3),nHD 640x360 (16:9), VGA 640x480 (4:3), HD 1280x720 (16:9), Full HD 1920x1080 (16:9)" class="gui-dropdown" />
+                <ui:Toggle label="Is Horizontally Flipped" name="Flipped" class="gui-toggle" />
+                <ui:Toggle label="Segmentation Mask" name="Segmentation" class="gui-toggle" />
             </ui:ScrollView>
         </ui:VisualElement>
         <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenButton" class="gui-button gui-left-button">

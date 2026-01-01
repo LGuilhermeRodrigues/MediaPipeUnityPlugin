@@ -87,7 +87,8 @@ namespace Mediapipe.Unity
 
     private UnityEngine.Rect FlipHorizontally(UnityEngine.Rect rect)
     {
-      return new UnityEngine.Rect(1 - rect.x, rect.y, -rect.width, rect.height);
+      var width = CustomSettings.IsCameraFlipped ? rect.width : -rect.width;
+      return new UnityEngine.Rect(1 - rect.x, rect.y, width, rect.height);
     }
 
     private UnityEngine.Rect FlipVertically(UnityEngine.Rect rect)

@@ -30,6 +30,18 @@ MonoBehaviour:
     m_Localized: "Nome da C\xE2mera"
     m_Metadata:
       m_Items: []
+  - m_Id: 659253678698496
+    m_Localized: "Resolu\xE7\xE3o da C\xE2mera"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 667284344795136
+    m_Localized: Espelhar Horizontalmente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692299605864448
+    m_Localized: "M\xE1scara de Segmenta\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

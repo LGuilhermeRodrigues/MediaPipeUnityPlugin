@@ -30,6 +30,18 @@ MonoBehaviour:
     m_Localized: Camera Name
     m_Metadata:
       m_Items: []
+  - m_Id: 659253678698496
+    m_Localized: Camera Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 667284344795136
+    m_Localized: Is Horizontally Flipped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692299605864448
+    m_Localized: Segmentation Mask
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
