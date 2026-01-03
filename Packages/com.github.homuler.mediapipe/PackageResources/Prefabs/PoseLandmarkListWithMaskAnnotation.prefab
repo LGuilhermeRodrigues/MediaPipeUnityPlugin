@@ -56,6 +56,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3248819709640134465}
     m_Modifications:
+    - target: {fileID: 3454231179941771272, guid: 205c1b13c4f71acf5b968f461c41b2a0,
+        type: 3}
+      propertyPath: _maskShader
+      value: 
+      objectReference: {fileID: 4800000, guid: 7adfa9ebe754989caa35dbb2c5526d1c, type: 3}
     - target: {fileID: 4870111229818662210, guid: 205c1b13c4f71acf5b968f461c41b2a0,
         type: 3}
       propertyPath: m_LocalPosition.x

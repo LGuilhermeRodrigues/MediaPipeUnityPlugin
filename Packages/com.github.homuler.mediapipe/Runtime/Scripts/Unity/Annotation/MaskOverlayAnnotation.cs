@@ -87,6 +87,15 @@ namespace Mediapipe.Unity
       _screen.rectTransform.sizeDelta = screen.rectTransform.sizeDelta;
       _screen.color = new Color(1, 1, 1, 1);
 
+      Texture2D newTex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+      Color fillColor = new Color(0.5f, 0.5f, 0.5f, 1);
+      Color[] pixels = new Color[width * height];
+      for (int i = 0; i < pixels.Length; i++)
+        pixels[i] = fillColor;
+      newTex.SetPixels(pixels);
+      newTex.Apply();
+      _screen.texture = newTex;
+      
       _material = new Material(_maskShader)
       {
         renderQueue = (int)RenderQueue.Transparent
