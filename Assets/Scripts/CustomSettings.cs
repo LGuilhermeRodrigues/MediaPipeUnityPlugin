@@ -186,7 +186,7 @@ public static class CustomSettings
         {
             if (PlayerPrefs.HasKey(MaskColorKey))
                 return StringToColor(PlayerPrefs.GetString(MaskColorKey));
-            return StringToColor("0.666,0.666,0.666");
+            return StringToColor("0.636;0.636;0.636");
         }
         set
         {

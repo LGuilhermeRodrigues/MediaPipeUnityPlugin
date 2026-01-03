@@ -46,6 +46,10 @@ MonoBehaviour:
     m_Localized: "Sele\xE7\xE3o do Modelo"
     m_Metadata:
       m_Items: []
+  - m_Id: 1427167964950528
+    m_Localized: "Cor da M\xE1scara"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -22,6 +22,8 @@ public class SidePanel : MonoBehaviour
     private Toggle toggleIsCameraFlipped;
     private Toggle toggleSegmentationMask;
     private DropdownField dropdownModelType;
+    private Button mask_color_button;
+    private VisualElement color_grid_panel;
 
     private void Awake()
     {
@@ -80,6 +82,11 @@ public class SidePanel : MonoBehaviour
         }
         poseSolution.NotifyChanges();
       });
+      mask_color_button = root.Q("SelectedColor") as Button;
+      mask_color_button.style.backgroundColor = new StyleColor(CustomSettings.MaskColor);
+      color_grid_panel = root.Q("color_grid_panel");
+      mask_color_button?.RegisterCallback<ClickEvent>(evt => OpenColorGrid());
+      CreateColorGrid(root);
     }
 
     void Start()
@@ -158,15 +165,6 @@ public class SidePanel : MonoBehaviour
         CheckPossibleFallbacks();
       }
     }
-
-    private void ClickOnScreen()
-    {
-      Debug.Log("click on screen");
-      if (!panel_hidden)
-      {
-        Toggle();
-      }
-    }
     
     private int CameraResolutionTextToIndex(string text)
     {
@@ -183,4 +181,100 @@ public class SidePanel : MonoBehaviour
       return 0;
     }
     
+    void OpenColorGrid()
+    {
+      color_grid_panel.style.display = DisplayStyle.Flex;
+      mask_color_button.style.display = DisplayStyle.None;
+    }
+
+    void OnColorSelected(Color c)
+    {
+      mask_color_button.style.display = DisplayStyle.Flex;
+      mask_color_button.style.backgroundColor = new StyleColor(c);
+      CustomSettings.MaskColor = c;
+      color_grid_panel.style.display = DisplayStyle.None;
+      //Debug.Log("Selected color: " + c);
+      //Debug.Log("Raw: " + CustomSettings.ColorToString(c));
+      //Debug.Log("Selected col0r: " + CustomSettings.StringToColor(CustomSettings.ColorToString(c)));
+    }
+    
+    void AddCell(VisualElement grid,Color c)
+    {
+      var cell = new Button();
+      cell.style.width = 30;
+      cell.style.height = 30;
+      cell.style.marginRight = 2;
+      cell.style.marginBottom = 2;
+      cell.style.backgroundColor = new StyleColor(c);
+      cell.clicked += () => OnColorSelected(c);
+      grid.Add(cell);
+    }
+    
+    public void CreateColorGrid(VisualElement rootVisualElement)
+    {
+        var grid = rootVisualElement.Q("color_grid") as VisualElement;
+        grid.style.flexDirection = FlexDirection.Row;
+        grid.style.flexWrap = Wrap.Wrap;
+        grid.style.justifyContent = Justify.FlexStart;
+        grid.style.width = (30 + 6) * 12;
+
+        // Generate 12 base hues evenly around the wheel.
+        Color[] baseColors = new Color[12];
+        float startHue = 0.66f; // start near blue
+        for (int i = 0; i < 12; i++)
+        {
+            float h = (startHue + (i / 12f)) % 1f; // step around hue wheel
+            baseColors[i] = Color.HSVToRGB(h, 1f, 1f);
+        }
+
+        // 1) Grayscale top row (12 columns)
+        for (int col = 0; col < 12; col++)
+        {
+            float gray = col / 11f; // 0..1
+            var grayColor = new Color(gray, gray, gray, 1f);
+            AddCell(grid, grayColor);
+        }
+
+        // 2) 9 tone rows (total rows = 1 gray + 9 = 10)
+        // We want row index 0..8 (9 rows). The middle row index (4) should be the base color.
+        int toneRows = 9;
+        int middleIndex = toneRows / 2; // 4 for 9 rows
+
+        for (int row = 0; row < (toneRows - 1); row++)
+        {
+            foreach (Color baseColor in baseColors)
+            {
+                // Convert base color to HSV
+                Color.RGBToHSV(baseColor, out float h, out float sBase, out float vBase);
+
+                Color tone;
+                if (row == middleIndex)
+                {
+                    // Middle row = exact base color
+                    tone = baseColor;
+                }
+                else if (row < middleIndex)
+                {
+                    // Darker steps above middle: interpolate value from dark -> base (keep saturation high)
+                    float t = row / (float)middleIndex; // 0..1 where 0 = darkest, 1 -> reach base at middle
+                    float v = Mathf.Lerp(0.12f, vBase, t);    // dark to base brightness
+                    float s = 1f;                             // keep saturated in darks
+                    tone = Color.HSVToRGB(h, s, v);
+                }
+                else
+                {
+                    // Lighter steps below middle: desaturate and blend toward white
+                    float t = (row - middleIndex) / (float)(toneRows - 1 - middleIndex); // 0..1 where 0 -> base, 1 -> lightest
+                    // Slightly reduce value (or keep near 1) and reduce saturation
+                    float v = Mathf.Lerp(vBase, 0.98f, t);       // keep value high for tints
+                    float s = Mathf.Lerp(1f, 0.18f, t);          // become less saturated toward white
+                    tone = Color.HSVToRGB(h, s, v);
+                    // Blend more toward white visually
+                    tone = Color.Lerp(tone, Color.white, t * 0.9f);
+                }
+
+                AddCell(grid, tone);
+            }
+        }
+    }
 }

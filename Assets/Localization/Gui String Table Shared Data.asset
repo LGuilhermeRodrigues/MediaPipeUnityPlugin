@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: Model Selection
     m_Metadata:
       m_Items: []
+  - m_Id: 1427167964950528
+    m_Key: Mask Color
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

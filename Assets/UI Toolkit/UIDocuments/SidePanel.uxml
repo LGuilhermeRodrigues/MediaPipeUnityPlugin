@@ -12,6 +12,13 @@
                 <ui:DropdownField label="Camera Resolution" name="DropdownResolution" choices="QVGA 320x240 (4:3),nHD 640x360 (16:9), VGA 640x480 (4:3), HD 1280x720 (16:9), Full HD 1920x1080 (16:9)" class="gui-dropdown" />
                 <ui:Toggle label="Is Horizontally Flipped" name="Flipped" class="gui-toggle" />
                 <ui:Toggle label="Segmentation Mask" name="Segmentation" class="gui-toggle" />
+                <ui:VisualElement name="MaskColor" class="gui-toggle" style="flex-direction: row;">
+                    <ui:Label text="Mask Color" class="unity-toggle__label" />
+                    <ui:Button name="SelectedColor" style="width: 25px; height: 25px; margin-right: auto; margin-left: auto; background-color: rgb(170, 170, 170); align-self: center;" />
+                    <ui:VisualElement name="color_grid_panel" style="position: relative; width: auto; background-color: rgb(241, 241, 241); height: auto; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; align-self: center; margin-right: auto; margin-left: auto; display: none;">
+                        <ui:VisualElement name="color_grid" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 <ui:DropdownField label="Model Selection" name="Model" choices="Lite, Full, Heavy" class="gui-dropdown" />
             </ui:ScrollView>
         </ui:VisualElement>

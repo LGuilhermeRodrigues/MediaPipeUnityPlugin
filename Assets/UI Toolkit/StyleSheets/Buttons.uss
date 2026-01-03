@@ -9,7 +9,7 @@
 }
 
 .gui-panel {
-    width: 40%;
+    width: 45%;
     height: 100%;
     background-color: rgb(188, 188, 188);
     transition-duration: 0.5s;
@@ -114,7 +114,7 @@
 }
 
 .gui-dropdown .unity-popup-field__label {
-    min-width: 300px;
+    min-width: 350px;
 }
 
 .gui-toggle {
@@ -126,7 +126,8 @@
 }
 
 .gui-toggle .unity-toggle__label {
-    min-width: 300px;
+    min-width: 350px;
+    -unity-text-align: middle-left;
 }
 
 .gui-toggle .unity-toggle__input {
