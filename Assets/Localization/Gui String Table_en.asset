@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Localized: Segmentation Mask
     m_Metadata:
       m_Items: []
+  - m_Id: 1151004591910912
+    m_Localized: Model Selection
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

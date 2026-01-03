@@ -39,6 +39,10 @@ MonoBehaviour:
     m_Key: Segmentation Mask
     m_Metadata:
       m_Items: []
+  - m_Id: 1151004591910912
+    m_Key: Model Selection
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

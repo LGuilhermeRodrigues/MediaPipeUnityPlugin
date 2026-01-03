@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/StyleSheets/Buttons.uss?fileID=7433441132597879392&amp;guid=de820c52b3b0d034ab36eef28e551cd3&amp;type=3#Buttons" />
-    <ui:VisualElement name="Screen" class="gui-screen" style="-unity-background-scale-mode: scale-to-fit;">
+    <ui:VisualElement name="Screen" class="gui-screen">
         <ui:VisualElement name="LeftPanel" class="gui-panel">
             <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" class="gui-title" />
             <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" horizontal-scroller-visibility="Hidden">
@@ -12,10 +12,13 @@
                 <ui:DropdownField label="Camera Resolution" name="DropdownResolution" choices="QVGA 320x240 (4:3),nHD 640x360 (16:9), VGA 640x480 (4:3), HD 1280x720 (16:9), Full HD 1920x1080 (16:9)" class="gui-dropdown" />
                 <ui:Toggle label="Is Horizontally Flipped" name="Flipped" class="gui-toggle" />
                 <ui:Toggle label="Segmentation Mask" name="Segmentation" class="gui-toggle" />
+                <ui:DropdownField label="Model Selection" name="Model" choices="Lite, Full, Heavy" class="gui-dropdown" />
             </ui:ScrollView>
         </ui:VisualElement>
-        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenButton" class="gui-button gui-left-button">
-            <ui:VisualElement name="Image" class="gui-button-image gui-button-image-open" />
-        </ui:Button>
+        <ui:VisualElement name="TogglePauseScreen" style="height: 120px;">
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenButton" class="gui-button gui-left-button">
+                <ui:VisualElement name="Image" class="gui-button-image gui-button-image-open" />
+            </ui:Button>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

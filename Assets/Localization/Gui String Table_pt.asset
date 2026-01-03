@@ -42,6 +42,10 @@ MonoBehaviour:
     m_Localized: "M\xE1scara de Segmenta\xE7\xE3o"
     m_Metadata:
       m_Items: []
+  - m_Id: 1151004591910912
+    m_Localized: "Sele\xE7\xE3o do Modelo"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

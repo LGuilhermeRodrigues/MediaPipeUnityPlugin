@@ -13,6 +13,7 @@ public class SidePanel : MonoBehaviour
     [SerializeField] private StringTable stringTable;
     private bool panel_hidden = true;
     VisualElement screen;
+    VisualElement exitPauseScreen;
     VisualElement left_panel;
     private Button open_button;
     VisualElement button_image;
@@ -20,11 +21,14 @@ public class SidePanel : MonoBehaviour
     private DropdownField dropdownFieldCameraResolutionIndex;
     private Toggle toggleIsCameraFlipped;
     private Toggle toggleSegmentationMask;
+    private DropdownField dropdownModelType;
 
     private void Awake()
     {
       var root = GetComponent<UIDocument>().rootVisualElement;
       screen = root.Q<VisualElement>("Screen");
+      exitPauseScreen = root.Q<VisualElement>("TogglePauseScreen");
+      open_button?.RegisterCallback<ClickEvent>(evt => Toggle());
       open_button = root.Q("OpenButton") as Button;
       open_button?.SetEnabled(false);
       button_image = open_button.Q<VisualElement>("Image");
@@ -56,6 +60,24 @@ public class SidePanel : MonoBehaviour
       toggleSegmentationMask.RegisterValueChangedCallback(evt =>
       {
         CustomSettings.SegmentationMask = evt.newValue;
+        poseSolution.NotifyChanges();
+      });
+      dropdownModelType  = root.Q("Model") as DropdownField;
+      dropdownModelType.index = CustomSettings.ModelType;
+      dropdownModelType.RegisterValueChangedCallback(evt =>
+      {
+        switch (evt.newValue)
+        {
+          case "Heavy":
+            CustomSettings.ModelType = 2;
+            break;
+          case "Full":
+            CustomSettings.ModelType = 1;
+            break;
+          default:
+            CustomSettings.ModelType = 0;
+            break;
+        }
         poseSolution.NotifyChanges();
       });
     }
@@ -105,12 +127,18 @@ public class SidePanel : MonoBehaviour
       if (entry == null) return;
       label.text = entry.Value;
     }
-
+    void OnExitPauseScreenClicked(ClickEvent evt)
+    {
+      Toggle();
+    }
     void Toggle()
     {
       panel_hidden  = !panel_hidden;
       if (panel_hidden)
       {
+        exitPauseScreen.style.height = new StyleLength(new Length(120f, LengthUnit.Pixel));
+        exitPauseScreen.style.flexGrow = 0;
+        exitPauseScreen.UnregisterCallback<ClickEvent>(OnExitPauseScreenClicked);
         screen.RemoveFromClassList("gui-paused-screen");
         left_panel.AddToClassList("gui-hidden-panel");
         button_image.AddToClassList("gui-button-image-open");
@@ -119,12 +147,24 @@ public class SidePanel : MonoBehaviour
       }
       else
       {
+        exitPauseScreen.style.height = new StyleLength(StyleKeyword.Auto);
+        exitPauseScreen.style.flexGrow = 1;
+        exitPauseScreen.RegisterCallback<ClickEvent>(OnExitPauseScreenClicked);
         screen.AddToClassList("gui-paused-screen");
         left_panel.RemoveFromClassList("gui-hidden-panel");
         button_image.RemoveFromClassList("gui-button-image-open");
         button_image.AddToClassList("gui-button-image-close");
         poseSolution.Pause();
         CheckPossibleFallbacks();
+      }
+    }
+
+    private void ClickOnScreen()
+    {
+      Debug.Log("click on screen");
+      if (!panel_hidden)
+      {
+        Toggle();
       }
     }
     

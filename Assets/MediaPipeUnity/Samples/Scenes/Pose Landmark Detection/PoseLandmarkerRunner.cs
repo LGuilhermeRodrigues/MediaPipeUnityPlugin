@@ -28,7 +28,7 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
 
     protected override IEnumerator Run()
     {
-      /*switch (CustomSettings.ModelType)
+      switch (CustomSettings.ModelType)
       {
         case 0:
           config.Model = ModelType.BlazePoseLite;
@@ -39,7 +39,7 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
         case 2:
           config.Model = ModelType.BlazePoseHeavy;
           break;
-      }*/
+      }
       config.OutputSegmentationMasks = CustomSettings.SegmentationMask;
       config.RunningMode = Tasks.Vision.Core.RunningMode.VIDEO;
       
