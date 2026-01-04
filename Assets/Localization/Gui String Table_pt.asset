@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: "Cor da M\xE1scara"
     m_Metadata:
       m_Items: []
+  - m_Id: 1764442334687232
+    m_Localized: Mostrar FPS
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

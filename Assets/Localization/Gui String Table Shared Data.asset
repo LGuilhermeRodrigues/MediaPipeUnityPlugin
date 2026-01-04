@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: Mask Color
     m_Metadata:
       m_Items: []
+  - m_Id: 1764442334687232
+    m_Key: Show FPS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

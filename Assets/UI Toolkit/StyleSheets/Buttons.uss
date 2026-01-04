@@ -133,3 +133,23 @@
 .gui-toggle .unity-toggle__input {
     justify-content: center;
 }
+
+.fps-label {
+    align-self: center;
+    font-size: 18px;
+    -unity-text-align: middle-left;
+    background-color: rgb(140, 140, 140);
+    height: 28px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 6px;
+    padding-top: 4px;
+    padding-right: 6px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+}

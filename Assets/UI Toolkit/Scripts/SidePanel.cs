@@ -21,9 +21,11 @@ public class SidePanel : MonoBehaviour
     private DropdownField dropdownFieldCameraResolutionIndex;
     private Toggle toggleIsCameraFlipped;
     private Toggle toggleSegmentationMask;
+    private Toggle toggleShowFPS;
     private DropdownField dropdownModelType;
     private Button mask_color_button;
     private VisualElement color_grid_panel;
+    private Label labelFPS;
 
     private void Awake()
     {
@@ -65,15 +67,23 @@ public class SidePanel : MonoBehaviour
         poseSolution.NotifyChanges();
       });
       dropdownModelType  = root.Q("Model") as DropdownField;
+      dropdownModelType.choices.Clear();
+      var newList = new List<string>();
+      newList.Add("Leve");
+      newList.Add("Médio");
+      newList.Add("Pesado");
+      dropdownModelType.choices.AddRange(newList);
       dropdownModelType.index = CustomSettings.ModelType;
       dropdownModelType.RegisterValueChangedCallback(evt =>
       {
         switch (evt.newValue)
         {
           case "Heavy":
+          case "Pesado":
             CustomSettings.ModelType = 2;
             break;
           case "Full":
+          case "Médio":
             CustomSettings.ModelType = 1;
             break;
           default:
@@ -87,6 +97,14 @@ public class SidePanel : MonoBehaviour
       color_grid_panel = root.Q("color_grid_panel");
       mask_color_button?.RegisterCallback<ClickEvent>(evt => OpenColorGrid());
       CreateColorGrid(root);
+      toggleShowFPS  = root.Q("FPS") as Toggle;
+      toggleShowFPS.SetValueWithoutNotify(CustomSettings.ShowFPS);
+      toggleShowFPS.RegisterValueChangedCallback(evt =>
+      {
+        CustomSettings.ShowFPS = evt.newValue;
+      });
+      labelFPS = root.Q<Label>("LabelFPS");
+      UpdateFPSLabel();
     }
 
     void Start()
@@ -138,6 +156,24 @@ public class SidePanel : MonoBehaviour
     {
       Toggle();
     }
+    void UpdateFPSLabel()
+    {
+      var showFPS = CustomSettings.ShowFPS;
+      labelFPS.style.display = showFPS ? DisplayStyle.Flex : DisplayStyle.None;
+      labelFPS.text = "FPS: 0";
+      if (showFPS)
+      {
+        InvokeRepeating(nameof(UpdateFPSLabelEverySecond), 1f, 1f);
+      }
+      else
+      {
+        CancelInvoke(nameof(UpdateFPSLabelEverySecond));
+      }
+    }
+    void UpdateFPSLabelEverySecond()
+    {
+      labelFPS.text = "FPS: "+PoseReceiver.GetFPS();
+    }
     void Toggle()
     {
       panel_hidden  = !panel_hidden;
@@ -154,6 +190,7 @@ public class SidePanel : MonoBehaviour
       }
       else
       {
+        labelFPS.style.display = DisplayStyle.None;
         exitPauseScreen.style.height = new StyleLength(StyleKeyword.Auto);
         exitPauseScreen.style.flexGrow = 1;
         exitPauseScreen.RegisterCallback<ClickEvent>(OnExitPauseScreenClicked);
@@ -164,6 +201,7 @@ public class SidePanel : MonoBehaviour
         poseSolution.Pause();
         CheckPossibleFallbacks();
       }
+      UpdateFPSLabel();
     }
     
     private int CameraResolutionTextToIndex(string text)

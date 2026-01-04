@@ -20,12 +20,16 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:DropdownField label="Model Selection" name="Model" choices="Lite, Full, Heavy" class="gui-dropdown" />
+                <ui:Toggle label="Show FPS" name="FPS" class="gui-toggle" />
             </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement name="TogglePauseScreen" style="height: 120px;">
             <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OpenButton" class="gui-button gui-left-button">
                 <ui:VisualElement name="Image" class="gui-button-image gui-button-image-open" />
             </ui:Button>
+            <ui:VisualElement style="flex-grow: 1; align-self: flex-start;">
+                <ui:Label tabindex="-1" text="FPS: -" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LabelFPS" class="fps-label" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

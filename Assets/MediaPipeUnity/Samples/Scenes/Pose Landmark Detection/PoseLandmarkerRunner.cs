@@ -166,6 +166,7 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
             if (taskApi.TryDetectForVideo(image, GetCurrentTimestampMillisec(), imageProcessingOptions, ref result))
             {
               _poseLandmarkerResultAnnotationController.DrawNow(result);
+              PoseReceiver.ReceiveResult(result);
             }
             else
             {
