@@ -4,6 +4,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+using System.Globalization;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -22,6 +23,7 @@ namespace Mediapipe.Unity
     [SerializeField] private Color _color = Color.blue;
     [SerializeField, Range(0, 1)] private float _threshold = 0.9f;
 
+    public Color fillColor = new Color(0.5f, 0.5f, 0.5f, 1);
     private GameObject _screenObject;
     private RawImage _screen;
     private Material _prevMaterial;
@@ -88,7 +90,7 @@ namespace Mediapipe.Unity
       _screen.color = new Color(1, 1, 1, 1);
 
       Texture2D newTex = new Texture2D(width, height, TextureFormat.RGBA32, false);
-      Color fillColor = new Color(0.5f, 0.5f, 0.5f, 1);
+      fillColor = GetMaskColor();
       Color[] pixels = new Color[width * height];
       for (int i = 0; i < pixels.Length; i++)
         pixels[i] = fillColor;
@@ -107,6 +109,22 @@ namespace Mediapipe.Unity
       _material.SetInt("_Height", height);
       ApplyThreshold(_threshold);
       InitMaskBuffer(width, height);
+    }
+    
+    private Color StringToColor(string formatted)
+    {
+      string[] parts = formatted.Split(';');
+      float r = float.Parse(parts[0], CultureInfo.InvariantCulture);
+      float g = float.Parse(parts[1], CultureInfo.InvariantCulture);
+      float b = float.Parse(parts[2], CultureInfo.InvariantCulture);
+      return new  Color(r, g, b, 1f);
+    } 
+    
+    private Color GetMaskColor()
+    {
+      if (PlayerPrefs.HasKey("MaskColor"))
+        return StringToColor(PlayerPrefs.GetString("MaskColor"));
+      return StringToColor("0.636;0.636;0.636");
     }
 
     public void SetMaskTexture(Texture2D maskTexture, Color color)

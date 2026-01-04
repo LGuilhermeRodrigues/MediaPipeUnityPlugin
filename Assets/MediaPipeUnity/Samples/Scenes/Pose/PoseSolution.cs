@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mediapipe.Unity;
 using Mediapipe.Unity.Sample;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class PoseSolution : MonoBehaviour
   [SerializeField] private bool hideLeftPanel = false;
   private BaseRunner _baseRunner;
   private bool has_changes;
+  private bool has_changes_in_resolution;
   private GameObject segmentationMaskObject;
   private bool _isFindingMask = false;
   
@@ -42,9 +44,10 @@ public class PoseSolution : MonoBehaviour
     footerPanel.gameObject.SetActive(false);
   }
 
-  public void NotifyChanges()
+  public void NotifyChanges(bool changeInResolution=false)
   {
     has_changes = true;
+    has_changes_in_resolution = changeInResolution;
   }
 
   public void Pause()
@@ -57,8 +60,15 @@ public class PoseSolution : MonoBehaviour
   {
     if (has_changes)
     {
-      UpdateSegmentationMask();
+      if (has_changes_in_resolution)
+      {
+        segmentationMaskObject = null;
+        GameObject mask = GameObject.Find("MaskOverlayAnnotation");
+        var annotationInstance = mask.transform.parent.gameObject;
+        Destroy(annotationInstance);
+      }
       _baseRunner.Play();
+      UpdateSegmentationMask();
     }
     else
     {
@@ -76,6 +86,7 @@ public class PoseSolution : MonoBehaviour
       if (mask != null)
       {
         segmentationMaskObject =  mask;
+        _isFindingMask = false;
         UpdateSegmentationMask();
       }
       else
@@ -93,6 +104,44 @@ public class PoseSolution : MonoBehaviour
       if (rawImage != null)
       {
         rawImage.enabled = CustomSettings.SegmentationMask;
+        if(rawImage.enabled){
+          var width = rawImage.texture.width;
+          var height = rawImage.texture.height;
+          // Checking resolution again in case of an invalidid resolution
+          var resolutionIndex = CustomSettings.CameraResolutionIndex;
+          Debug.Log("Resolution Index: " + resolutionIndex);
+          switch (resolutionIndex)
+          {
+            case 0:
+              width = 320;
+              height = 240;
+              break;
+            case 1:
+              width = 640;
+              height = 360;
+              break;
+            case 2:
+              width = 640;
+              height = 480;
+              break;
+            case 3:
+              width = 1280;
+              height = 720;
+              break;
+            case 4:
+              width = 1920;
+              height = 1080;
+              break;
+          }
+          Texture2D newTex = new Texture2D(width, height, TextureFormat.RGBA32, false);
+          Color[] pixels = new Color[width * height];
+          var fillColor = CustomSettings.MaskColor;
+          for (int i = 0; i < pixels.Length; i++)
+            pixels[i] = fillColor;
+          newTex.SetPixels(pixels);
+          newTex.Apply();
+          rawImage.texture = newTex;
+        }
       }
     }
     else

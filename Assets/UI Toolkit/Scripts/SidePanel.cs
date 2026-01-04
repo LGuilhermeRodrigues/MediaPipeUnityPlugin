@@ -42,13 +42,13 @@ public class SidePanel : MonoBehaviour
       dropdownFieldCameraSource.RegisterValueChangedCallback(v =>
       {
         CustomSettings.CameraName = v.newValue;
-        poseSolution.NotifyChanges();
+        poseSolution.NotifyChanges(true);
       });
       dropdownFieldCameraResolutionIndex = root.Q("DropdownResolution") as DropdownField;
       dropdownFieldCameraResolutionIndex.RegisterValueChangedCallback(evt =>
       {
         CustomSettings.CameraResolutionIndex = CameraResolutionTextToIndex(evt.newValue);
-        poseSolution.NotifyChanges();
+        poseSolution.NotifyChanges(true);
       });
       toggleIsCameraFlipped  = root.Q("Flipped") as Toggle;
       toggleIsCameraFlipped.SetValueWithoutNotify(CustomSettings.IsCameraFlipped);
@@ -193,9 +193,7 @@ public class SidePanel : MonoBehaviour
       mask_color_button.style.backgroundColor = new StyleColor(c);
       CustomSettings.MaskColor = c;
       color_grid_panel.style.display = DisplayStyle.None;
-      //Debug.Log("Selected color: " + c);
-      //Debug.Log("Raw: " + CustomSettings.ColorToString(c));
-      //Debug.Log("Selected col0r: " + CustomSettings.StringToColor(CustomSettings.ColorToString(c)));
+      poseSolution.NotifyChanges();
     }
     
     void AddCell(VisualElement grid,Color c)

@@ -40,6 +40,8 @@ namespace Mediapipe.Unity.Sample.PoseLandmarkDetection
           config.Model = ModelType.BlazePoseHeavy;
           break;
       }
+
+      config.ImageReadMode = ImageReadMode.CPU;
       config.OutputSegmentationMasks = CustomSettings.SegmentationMask;
       config.RunningMode = Tasks.Vision.Core.RunningMode.VIDEO;
       
