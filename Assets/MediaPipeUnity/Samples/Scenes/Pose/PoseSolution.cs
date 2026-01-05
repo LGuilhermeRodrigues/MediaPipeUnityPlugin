@@ -47,13 +47,15 @@ public class PoseSolution : MonoBehaviour
   public void NotifyChanges(bool changeInResolution=false)
   {
     has_changes = true;
-    has_changes_in_resolution = changeInResolution;
+    if (changeInResolution)
+      has_changes_in_resolution = true;
   }
 
   public void Pause()
   {
     _baseRunner.Pause();
     has_changes = false;
+    has_changes_in_resolution = false;
   }
   
   public void Resume()
