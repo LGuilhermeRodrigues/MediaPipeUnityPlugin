@@ -66,8 +66,11 @@ public class PoseSolution : MonoBehaviour
       {
         segmentationMaskObject = null;
         GameObject mask = GameObject.Find("MaskOverlayAnnotation");
-        var annotationInstance = mask.transform.parent.gameObject;
-        Destroy(annotationInstance);
+        if (mask != null)
+        {
+          var annotationInstance = mask.transform.parent.gameObject;
+          Destroy(annotationInstance);
+        }
       }
       _baseRunner.Play();
       UpdateSegmentationMask();
